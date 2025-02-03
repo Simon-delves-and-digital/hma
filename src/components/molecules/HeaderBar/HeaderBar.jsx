@@ -1,4 +1,4 @@
-import { PersonIcon } from "@radix-ui/react-icons"
+import { PersonIcon } from "@radix-ui/react-icons";
 import { Dialog } from "radix-ui";
 
 export const HeaderBar = () => {
@@ -8,6 +8,6 @@ export const HeaderBar = () => {
         <PersonIcon />
       </Dialog.Trigger>
     </div>
-  )
-}
+  );
+};
 

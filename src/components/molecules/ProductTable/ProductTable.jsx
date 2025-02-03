@@ -1,4 +1,4 @@
-import { ProductCard } from './ProductCard/ProductCard'
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const ProductTable = ({ products, addToCart }) => {
   return (
@@ -8,9 +8,9 @@ export const ProductTable = ({ products, addToCart }) => {
 
           return (
             <ProductCard product={product} addToCart={addToCart} key={product.id} />
-          )
+          );
         })}
       </div>
     </>
-  )
-}
+  );
+};

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { Dialog } from "radix-ui";
-import './App.css'
-import { getProducts } from './API/api'
-import { ProductTable } from './components/molecules/ProductTable'
-import { HeaderBar } from './components/molecules/ProductTable/HeaderBar/HeaderBar'
+import './App.css';
+import { getProducts } from './API/api';
+import { ProductTable } from './components/molecules/ProductTable/ProductTable';
+import { HeaderBar } from './components/molecules/HeaderBar/HeaderBar';
 import { Cart } from './components/molecules/Cart/Cart';
 
 function App() {
@@ -11,9 +11,10 @@ function App() {
   const [cartItems, setCartItems] = useState({});
 
   const fetchData = async () => {
-    const fetchedProducts = await getProducts()
-    setProducts(fetchedProducts)
-  }
+    const fetchedProducts = await getProducts();
+    setProducts(fetchedProducts);
+  };
+
   const addToCart = (product) => {
     const currentCount = cartItems[product.id]?.count || 0;
 
@@ -25,11 +26,11 @@ function App() {
           count: currentCount + 1,
           product: product
         }
-      })
-  }
+      });
+  };
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
   return (
@@ -46,7 +47,7 @@ function App() {
         />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

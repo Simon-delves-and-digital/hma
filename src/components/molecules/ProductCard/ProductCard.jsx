@@ -2,7 +2,7 @@ import { Dialog } from "radix-ui";
 import { Modal } from "../../atoms/Modal/Modal";
 
 export const ProductCard = ({ product, addToCart }) => {
-  const { title, thumbnail, description, price } = product
+  const { title, thumbnail, description, price } = product;
   return (
     <div className='col-span-12 md:col-span-4 lg:col-span-3 flex flex-col items-centre shadow-md'>
 
@@ -36,6 +36,6 @@ export const ProductCard = ({ product, addToCart }) => {
           <span className='pr-2' aria-label='price' data-testid='ProductCardPrice'>£{price}</span>
         </div>
       </div>
-    </div>)
-}
+    </div>);
+};
 

@@ -2,7 +2,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import { Dialog } from "radix-ui";
 
 
-export const Modal = ({title, children}) => {
+export const Modal = ({ title, children }) => {
   return (
 
     <Dialog.Portal>
@@ -17,9 +17,9 @@ export const Modal = ({title, children}) => {
             <Cross2Icon />
           </button>
         </Dialog.Close>
-       {children}
+        {children}
       </Dialog.Content>
     </Dialog.Portal>
-  )
-}
+  );
+};
 

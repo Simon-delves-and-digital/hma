@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
-import { within } from '@testing-library/dom'
-import { test, expect, vi, afterEach } from 'vitest'
+import { within } from '@testing-library/dom';
+import { test, expect, vi, afterEach } from 'vitest';
 import { ProductCard } from './ProductCard';
 
 afterEach(() => {
@@ -13,8 +13,9 @@ const mockProduct = {
   description: "test description",
   price: 1234
 
-}
-const mockAddToCart = vi.fn()
+};
+
+const mockAddToCart = vi.fn();
 
 test('renders correct title element', () => {
   render(<ProductCard product={mockProduct} addToCart={mockAddToCart} />);
