@@ -1,16 +1,31 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Dialog } from "radix-ui";
 import './App.css'
 import { getProducts } from './API/api'
+import { ProductTable } from './components/molecules/ProductTable'
+import { HeaderBar } from './components/molecules/ProductTable/HeaderBar/HeaderBar'
+import { Cart } from './components/molecules/Cart/Cart';
 
 function App() {
-  // const [count, setCount] = useState(0)
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState({});
+
   const fetchData = async () => {
     const fetchedProducts = await getProducts()
     setProducts(fetchedProducts)
+  }
+  const addToCart = (product) => {
+    const currentCount = cartItems[product.id]?.count || 0;
 
+    setCartItems(
+      {
+        ...cartItems,
+        [product.id]:
+        {
+          count: currentCount + 1,
+          product: product
+        }
+      })
   }
 
   useEffect(() => {
@@ -19,26 +34,17 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='max-w-[1280px]'>
+        <Dialog.Root>
+          <HeaderBar />
+          <Cart items={cartItems} />
+        </Dialog.Root>
+
+        <ProductTable
+          products={products}
+          addToCart={addToCart}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={console.log("products: ", products)}>
-          {/* count is {count} */}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
